@@ -5,101 +5,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITCHEST</title>
-   <style>
-    body{
-        background-color: #38618C; /* Couleur de fond bleu foncé */
-    }
-    section{
-        display: flex;
-        justify-content: space-between;
-        text-align: center;
-    color: #FFFFFF; /* Couleur de texte blanc */
-    padding: 50px;
-    }
-    .logo{
-        height: 100px;
-        width: 200px;
-    }
-    section img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-form {
-    width: 100%;
-    max-width: 400px; /* Largeur maximale du formulaire */
-}
-
-/* Styles pour les éléments du formulaire */
-form > div {
-    margin-bottom: 20px;
-}
-
-form label {
-    font-family: "Célias", sans-serif;
-    font-size: 16px;
-}
-
-form input[type="email"],
-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #FFFFFF; /* Bordure blanche */
-    background-color: transparent; /* Fond transparent */
-    color: #FFFFFF; /* Couleur de texte blanche */
-    font-family: "Célias", sans-serif;
-    font-size: 16px;
-}
-
-/* Styles pour la case à cocher Remember Me */
-form .block {
-    display: flex;
-    align-items: center;
-}
-
-form .block input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-/* Styles pour le bouton de connexion */
-form .flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-form .flex a {
-    text-decoration: none;
-    color: #FFFFFF; /* Couleur de texte blanche */
-    font-family: "Célias", sans-serif;
-    font-size: 14px;
-}
-
-form .flex a:hover {
-    color: #FFFFFF; /* Couleur de texte blanche au survol */
-}
-
-form .flex .primary-button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #FFFFFF; /* Couleur de fond blanche */
-    color: #38618C; /* Couleur de texte bleu foncé */
-    font-family: "Célias", sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-form .flex .primary-button:hover {
-    background-color: #35A7FF; /* Changement de couleur de fond au survol */
-    color: #FFFFFF; /* Changement de couleur de texte au survol */
-}
-section img {
-            width: 100%; /* Image occupe toute la largeur de sa div */
+    <style>
+        body {
+            background-color: #38618C;
+            /* Couleur de fond bleu foncé */
         }
-   </style>
-   
+
+        section {
+            display: flex;
+            justify-content: space-between;
+            /* Espacement entre les éléments */
+            text-align: center;
+            color: #FFFFFF;
+            /* Couleur de texte blanc */
+            padding: 50px;
+        }
+
+        .logo {
+            height: 100px;
+            width: 250px;
+        }
+
+        section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            /* Largeur maximale du formulaire */
+        }
+
+        /* Styles pour les éléments du formulaire */
+        form>div {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            font-family: "Célias", sans-serif;
+            font-size: 16px;
+        }
+
+        form input[type="email"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #FFFFFF;
+            /* Bordure blanche */
+            background-color: transparent;
+            /* Fond transparent */
+            color: #FFFFFF;
+            /* Couleur de texte blanche */
+            font-family: "Célias", sans-serif;
+            font-size: 16px;
+        }
+
+        /* Styles pour la case à cocher Remember Me */
+        form .block {
+            display: flex;
+            align-items: center;
+        }
+
+        form .block input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Styles pour le bouton de connexion */
+        form .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        form .flex a {
+            text-decoration: none;
+            color: #FFFFFF;
+            /* Couleur de texte blanche */
+            font-family: "Célias", sans-serif;
+            font-size: 14px;
+        }
+
+        form .flex a:hover {
+            color: #FFFFFF;
+            /* Couleur de texte blanche au survol */
+        }
+
+        form .flex .primary-button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            /* Couleur de fond blanche */
+            color: #38618C;
+            /* Couleur de texte bleu foncé */
+            font-family: "Célias", sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        form .flex .primary-button:hover {
+            background-color: #35A7FF;
+            /* Changement de couleur de fond au survol */
+            color: #FFFFFF;
+            /* Changement de couleur de texte au survol */
+        }
+    </style>
+
 </head>
 
 <body>
@@ -148,8 +161,6 @@ section img {
                 </x-primary-button>
             </div>
         </form>
-
-
     </section>
 </body>
 

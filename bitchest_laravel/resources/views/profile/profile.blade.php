@@ -7,9 +7,17 @@
     <title>BITCHEST</title>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@latest/qrcode.min.js"></script>
     <style>
-        section{
-            display: flex ;
+        section {
+            display: flex;
             justify-content: space-between;
+        }
+
+        .section2 {
+            display: flex;
+            flex-direction: column;
+            height: 350px;
+            width: 200px;
+            background-color: violet;
         }
     </style>
 </head>
@@ -45,66 +53,105 @@
 
         <div class="section2">
             <div id="solde">
-                // récupérer et Afficher le solde de l'utilisateur ici
+                <?php
+                // Connectez-vous à votre base de données
+                $pdo = new PDO('mysql:host=host_name;dbname=database_name', 'username', 'password');
+
+                // Sélectionnez le solde de l'utilisateur depuis la base de données
+                $stmt = $pdo->prepare("SELECT solde FROM utilisateurs WHERE id = :id");
+                $stmt->execute(['id' => $userId]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Vérifiez si l'utilisateur existe
+                if ($user) {
+                    // Affichez le solde de l'utilisateur
+                    echo '<p>Solde: ' . $user['solde'] . '</p>';
+                } else {
+                    // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur
+                    echo '<p>L\'utilisateur n\'existe pas.</p>';
+                }
+                ?>
             </div>
             <div id="recharg">
 
-                <div>//récupérer le solde de l'utilisateur dabord</div>
+                <div id="solde">
+                    <?php
+                    // Connectez-vous à votre base de données
+                    $pdo = new PDO('mysql:host=host_name;dbname=database_name', 'username', 'password');
+
+                    // Sélectionnez le solde de l'utilisateur depuis la base de données
+                    $stmt = $pdo->prepare("SELECT solde FROM utilisateurs WHERE id = :id");
+                    $stmt->execute(['id' => $userId]);
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    // Vérifiez si l'utilisateur existe
+                    if ($user) {
+                        // Affichez le solde de l'utilisateur
+                        echo '<p>Solde: ' . $user['solde'] . '</p>';
+                    } else {
+                        // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur
+                        echo '<p>L\'utilisateur n\'existe pas.</p>';
+                    }
+                    ?>
+                </div>
                 <div>
                     <div id="qrcode"></div>
                     <a href="https://mytouchpoint.net/">Recharger mon compte</a>
                 </div>
-                <div>//afficher les information du wallets (clé de sécurité et adresse) qui sont générer et attribuer automatique à la création du compte de l'utilisateur</div>
-
+                <div>
+                    <h3>wallets</h3>
+                    <h4>security key: xxxxxxxxxxxx</h4>
+                    <h4>adresse: xxxxxxxxxxxxxxxx</h4>
+                </div>
             </div>
-            <div class="blockchain">
-        <h1>Cryptomonnaies de l'utilisateur</h1>
 
-        <?php
-        // Connexion à la base de données (à remplir avec vos propres informations de connexion)
-        $servername = "localhost";
-        $username = "username";
-        $password = "password";
-        $dbname = "nom_base_de_données";
+        </div>
+        <div class="blockchain">
+            <h1>Cryptomonnaies de l'utilisateur</h1>
 
-        // Création de la connexion
-        $conn = new mysqli($servername, $username, $password, $dbname);
+            <?php
+            // Connexion à la base de données (à remplir avec vos propres informations de connexion)
+            $servername = "localhost";
+            $username = "username";
+            $password = "password";
+            $dbname = "nom_base_de_données";
 
-        // Vérification de la connexion
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+            // Création de la connexion
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // ID de l'utilisateur pour lequel nous voulons récupérer les cryptomonnaies (à remplacer par l'ID réel de l'utilisateur)
-        $user_id = 1;
+            // Vérification de la connexion
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-        // Requête SQL pour récupérer les cryptomonnaies de l'utilisateur spécifié
-        $sql = "SELECT cm.name AS crypto_name, a.sold AS crypto_quantity
+            // ID de l'utilisateur pour lequel nous voulons récupérer les cryptomonnaies (à remplacer par l'ID réel de l'utilisateur)
+            $user_id = 1;
+
+            // Requête SQL pour récupérer les cryptomonnaies de l'utilisateur spécifié
+            $sql = "SELECT cm.name AS crypto_name, a.sold AS crypto_quantity
                 FROM purchase p
                 JOIN crypto_monnaie cm ON p.id_crypto = cm.id_crypto
                 JOIN account a ON p.id_user = a.id_wallet
                 JOIN wallet w ON a.id_wallet = w.id_wallet
                 WHERE w.id_user = $user_id";
 
-        $result = $conn->query($sql);
+            $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            // Affichage des cryptomonnaies de l'utilisateur
-            echo "<ul>";
-            while($row = $result->fetch_assoc()) {
-                echo "<li>" . $row["crypto_name"] . ": " . $row["crypto_quantity"] . "</li>";
+            if ($result->num_rows > 0) {
+                // Affichage des cryptomonnaies de l'utilisateur
+                echo "<ul>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<li>" . $row["crypto_name"] . ": " . $row["crypto_quantity"] . "</li>";
+                }
+                echo "</ul>";
+            } else {
+                echo "L'utilisateur ne détient aucune cryptomonnaie.";
             }
-            echo "</ul>";
-        } else {
-            echo "L'utilisateur ne détient aucune cryptomonnaie.";
-        }
 
-        // Fermeture de la connexion à la base de données
-        $conn->close();
-        ?>
-    </div>
+            // Fermeture de la connexion à la base de données
+            $conn->close();
+            ?>
         </div>
-
     </section>
 
     <script>

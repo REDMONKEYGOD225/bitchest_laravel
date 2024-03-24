@@ -183,34 +183,25 @@
             <h1>Bitchest <br> La nouvelle ère du trading</h1>
             <div class="card-container">
 
+
                 <div class="card">
-                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
-                    <p>des millions de personnes rejoignent chaque mois notre platforme</p>
+                    <img src="images/Technologie de pointe.jpeg" alt="Description de l'image">
+                    <p>Bitchest utilise une technologie de pointe, y compris des algorithmes de trading avancés et des outils d'analyse de données puissants, pour offrir une expérience de trading moderne et efficace.</p>
                 </div>
 
                 <div class="card">
-                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
-                    <p>Bitchest utilise une technologie de pointe pour offrir une plateforme de trading intuitive et sécurisée, garantissant une expérience transparente et fiable pour les utilisateurs.</p>
+                    <img src="images/Accessibilité et facilité d'utilisation.jpeg" alt="Description de l'image">
+                    <p> La plateforme Bitchest est conçue pour être accessible aux traders de tous niveaux d'expérience, offrant une interface conviviale et intuitive ainsi que des fonctionnalités simples à utiliser.</p>
                 </div>
 
                 <div class="card">
-                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
-                    <p>Bitchest utilise une technologie de pointe pour offrir une plateforme de trading intuitive et sécurisée, garantissant une expérience transparente et fiable pour les utilisateurs.</p>
+                    <img src="images/Transparence et sécurité.jpeg" alt="Description de l'image">
+                    <p>Bitchest met l'accent sur la transparence et la sécurité, en fournissant des informations claires sur les transactions et en mettant en œuvre des mesures de sécurité robustes pour protéger les fonds et les données des utilisateurs.</p>
                 </div>
 
                 <div class="card">
-                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
-                    <p>Bitchest se distingue par son engagement envers l'innovation continue, en introduisant régulièrement de nouvelles fonctionnalités et des outils avancés pour aider les traders à prendre des décisions éclairées dans un marché en constante évolution.</p>
-                </div>
-
-                <div class="card">
-                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
-                    <p>Bitchest rassemble une communauté dynamique et engagée de traders et d'investisseurs passionnés par les cryptomonnaies, favorisant ainsi l'échange de connaissances, d'idées et de stratégies pour une croissance collective.</p>
-                </div>
-
-                <div class="card">
-                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
-                    <p>Avec un accent particulier sur la transparence et la fiabilité, Bitchest s'efforce de fournir des données précises et en temps réel, ainsi qu'un environnement de trading sécurisé, afin d'instaurer la confiance et la crédibilité dans le monde du trading de cryptomonnaies.</p>
+                    <img src="images/Innovation continue.jpeg" alt="Description de l'image">
+                    <p>Bitchest est constamment à la recherche de nouvelles opportunités et de nouvelles technologies pour améliorer son offre de trading, ce qui en fait une plateforme à la pointe de l'innovation dans le domaine du trading en ligne.</p>
                 </div>
 
             </div>

@@ -72,7 +72,7 @@
         <nav>
             <ul>
                 <li><a href="#">Accueil</a></li>
-                <li><a href="#">Marché</a></li>
+                <li><a href="{{ route('marche') }}">Marché</a></li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#">Formation</a></li>
                 <li><a href="#">Contacts</a></li>

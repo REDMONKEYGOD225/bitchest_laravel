@@ -15,11 +15,11 @@
                     {{ __("You're logged in!") }}
 
                     <ul>
-                        <li><a href="{{ route('user.create') }}">Ajouter utilisateur</a></li>
-                        <li><a href="{{ route('user.index') }}">Liste utilisateur</a></li>
-                        <li><a href="{{ route('crypto.index') }}">Liste crypto</a></li>
-                        <li><a href="{{ route('news.create') }}">Ajouter news</a></li>
-                        <li><a href="{{ route('news.index') }}">News</a></li>
+                        <li><a href="{{ route('admin.user.create') }}">Ajouter utilisateur</a></li>
+                        <li><a href="{{ route('admin.user.index') }}">Liste utilisateur</a></li>
+                        <li><a href="{{ route('admin.crypto.index') }}">Liste crypto</a></li>
+                        <li><a href="{{ route('admin.news.create') }}">Ajouter news</a></li>
+                        <li><a href="{{ route('admin.news.index') }}">News</a></li>
                     </ul>
 
                     <!-- Bouton de déconnexion -->

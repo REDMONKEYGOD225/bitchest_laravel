@@ -102,11 +102,11 @@
         }
 
         .card {
-            width: 150px;
+            width: 200px;
             /* Ajustez la largeur selon vos besoins */
             background-color: #FFFFFF;
             /* Couleur de fond des cartes */
-            padding: 20px;
+            padding: px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             /* Ombre légère */

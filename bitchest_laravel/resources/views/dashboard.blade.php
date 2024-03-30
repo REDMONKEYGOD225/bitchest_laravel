@@ -1,55 +1,54 @@
 <style>
-    /* Ajout du CSS pour le logo */
     .bg-primary {
         background-color: #01FF19;
-        /* Couleur primaire */
+
     }
 
     .bg-primary img {
         max-height: 3rem;
-        /* Taille maximale du logo */
+
     }
 
-    /* Styling pour la liste des liens */
+
     ul {
         list-style-type: none;
-        /* Suppression des puces */
+
         padding: 0;
     }
 
     ul li {
         margin-bottom: 0.5rem;
-        /* Espacement entre les éléments de la liste */
+
     }
 
     ul li a {
         color: #38618C;
-        /* Couleur de lien */
+
         text-decoration: none;
-        /* Suppression du soulignement */
+
         font-family: 'Célias', sans-serif;
-        /* Police de caractères */
+
     }
 
     ul li a:hover {
         color: #35A7FF;
-        /* Couleur de lien au survol */
+
     }
 
-    /* Styling pour le bouton de déconnexion */
+
     form button {
         background: none;
         border: none;
         color: #38618C;
-        /* Couleur du texte */
+
         font-family: 'Célias', sans-serif;
-        /* Police de caractères */
+
         cursor: pointer;
     }
 
     form button:hover {
         color: #35A7FF;
-        /* Couleur du texte au survol */
+
     }
 </style>
 

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITCHEST-DASHBORD</title>
     <style>
-        /* Styles pour le formulaire */
+       
         body {
-            font-family: 'Célias', sans-serif; /* Police de caractères */
-            background-color: #FFFFFF; /* Couleur de fond */
-            color: #38618C; /* Couleur du texte */
+            font-family: 'Célias', sans-serif; 
+            background-color: #FFFFFF; 
+            color: #38618C; 
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,10 +20,10 @@
         }
 
         form {
-            background-color: #FFFFFF; /* Couleur de fond du formulaire */
+            background-color: #FFFFFF; 
             padding: 2rem;
             border-radius: 0.5rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             max-width: 400px;
             width: 100%;
         }
@@ -31,7 +31,7 @@
         label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #35A7FF; /* Couleur du texte des labels */
+            color: #35A7FF; 
         }
 
         input[type="text"],
@@ -40,7 +40,7 @@
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
-            border: 1px solid #38618C; /* Couleur de la bordure */
+            border: 1px solid #38618C; 
             border-radius: 0.25rem;
         }
 
@@ -51,8 +51,8 @@
         }
 
         button[type="submit"] {
-            background-color: #35A7FF; /* Couleur de fond du bouton */
-            color: #FFFFFF; /* Couleur du texte du bouton */
+            background-color: #35A7FF; 
+            color: #FFFFFF; 
             border: none;
             border-radius: 0.25rem;
             padding: 0.5rem 1rem;
@@ -60,7 +60,7 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #38618C; /* Couleur de fond du bouton au survol */
+            background-color: #38618C; 
         }
     </style>
 </head>

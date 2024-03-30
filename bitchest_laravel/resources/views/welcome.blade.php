@@ -13,7 +13,7 @@
 
         .section1 {
             position: relative;
-            /* Positionnement relatif pour la superposition */
+
             background-image: url('images/Fond-alpinisme.webp');
             background-size: cover;
             background-position: center;
@@ -27,26 +27,26 @@
 
         .section1::before {
             content: '';
-            /* Contenu du pseudo-élément */
+
             position: absolute;
-            /* Positionnement absolu */
+
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(56, 97, 140, 0.5);
-            /* Couleur du filtre */
+
             opacity: 0.1;
-            /* Opacité du filtre */
+
             z-index: 1;
-            /* Assure que le filtre est en arrière-plan */
+
         }
 
         .content {
             position: relative;
-            /* Positionnement relatif pour placer le texte au-dessus du filtre */
+
             z-index: 2;
-            /* Assure que le texte est en premier plan */
+
             max-width: 800px;
         }
 
@@ -103,39 +103,39 @@
 
         .card {
             width: 200px;
-            /* Ajustez la largeur selon vos besoins */
+
             background-color: #FFFFFF;
-            /* Couleur de fond des cartes */
+
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Ombre légère */
+
         }
 
         .card img {
             width: 100%;
-            /* Pour s'assurer que l'image s'adapte correctement */
+
             border-radius: 5px;
         }
 
         .card p {
             color: #38618C;
-            /* Couleur de texte des cartes */
+
             font-family: "Célias", sans-serif;
-            /* Nouvelle typographie */
+
         }
 
         .carousel {
             overflow: hidden;
             width: 100%;
             height: 300px;
-            /* Ajustez la hauteur selon vos besoins */
+
             position: relative;
             background-color: #FFFFFF;
             color: #FFFFFF;
-            /* Nouvelle couleur de texte */
+
             font-family: "Célias", sans-serif;
-            /* Nouvelle typographie */
+
         }
 
         .carousel .slides {
@@ -151,13 +151,12 @@
             align-items: center;
             font-size: 2em;
             background-color: #38618C;
-            /* Couleur bleu foncé pour les slides */
             color: #FFFFFF;
         }
-        .carousel h2 {
-    color: #38618C; /* Texte en bleu foncé */
-}
 
+        .carousel h2 {
+            color: #38618C;
+        }
     </style>
 </head>
 
@@ -232,7 +231,7 @@
             slides.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
         }
 
-        setInterval(nextSlide, 3000); // Change de slide toutes les 3 secondes (3000 millisecondes)
+        setInterval(nextSlide, 3000);
     </script>
 
     @include('layouts.footer')

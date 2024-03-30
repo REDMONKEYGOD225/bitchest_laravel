@@ -15,7 +15,7 @@ class CotationFactory extends Factory
             'crypto' => function () {
                 return \App\Models\CryptoMonnaie::factory()->create()->id;
             },
-            'count' => $this->faker->randomFloat(2, 1, 100), // Cotation aléatoire entre 1 et 100 avec 2 décimales
+            'count' => $this->faker->randomFloat(2, 1, 100), 
         ];
     }
 }

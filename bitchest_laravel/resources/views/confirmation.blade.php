@@ -33,7 +33,7 @@
         }
 
         .password {
-            background-color: #38618C; /* Nouvelle couleur */
+            background-color: #38618C; 
             border: 1px solid #ccc;
             padding: 10px;
             border-radius: 5px;
@@ -44,7 +44,7 @@
             margin: 0;
             font-size: 18px;
             text-align: center;
-            color: #FFFFFF; /* Couleur du texte ajustée pour meilleure visibilité */
+            color: #FFFFFF; 
         }
     </style>
 </head>

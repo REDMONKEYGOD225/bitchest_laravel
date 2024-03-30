@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITCHEST-DASHBOARD</title>
     <style>
-        /* Styles pour la page de suppression d'utilisateur */
+        
         body {
             font-family: 'Célias', sans-serif;
-            /* Police de caractères */
+            
             background-color: #FFFFFF;
-            /* Couleur de fond */
+           
             color: #38618C;
-            /* Couleur du texte */
+            
             margin: 0;
             padding: 0;
             display: flex;
@@ -26,7 +26,7 @@
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: #FF5964;
-            /* Couleur du texte de l'en-tête */
+           
         }
 
         p {

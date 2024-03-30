@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers_password\PasswordHelper;
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +14,7 @@ class AdminSeeder extends Seeder
         Admin::create([
             'name' => 'Admin_User',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('adminpassword'),
+            'password' => PasswordHelper::hashBoth('adminpassword'),
         ]);
     }
 }

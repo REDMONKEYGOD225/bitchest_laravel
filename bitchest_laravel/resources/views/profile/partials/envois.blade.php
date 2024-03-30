@@ -7,9 +7,9 @@
     <title>BITCHEST</title>
     <style>
         body {
-            font-family: 'Célias', sans-serif; /* Police de caractères */
-            background-color: #FFFFFF; /* Couleur de fond */
-            color: #38618C; /* Couleur du texte */
+            font-family: 'Célias', sans-serif; 
+            background-color: #FFFFFF; 
+            color: #38618C; 
             margin: 0;
             padding: 0;
             display: flex;

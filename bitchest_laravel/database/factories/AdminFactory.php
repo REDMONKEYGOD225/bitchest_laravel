@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Helpers_password\PasswordHelper;
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,7 @@ class AdminFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'password' => Hash::make('password'), // Exemple de mot de passe hashé
+            'password' => PasswordHelper::hashBoth('password'), 
         ];
     }
 }

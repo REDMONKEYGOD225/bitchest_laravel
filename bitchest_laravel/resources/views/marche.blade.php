@@ -7,7 +7,6 @@
     <title>Liste des Crypto-monnaies</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Ajoutez vos styles CSS ici */
         table {
             width: 100%;
             border-collapse: collapse;

@@ -34,5 +34,30 @@ class CryptoMonnaieSeeder extends Seeder
             'name' => 'Cardano',
             'symbol' => 'ADA',
         ]);
+
+        CryptoMonnaie::create([
+            'name' => 'Bitcoin Cash',
+            'symbol' => 'BCH',
+        ]);
+
+        CryptoMonnaie::create([
+            'name' => 'NEM',
+            'symbol' => 'XEM',
+        ]);
+
+        CryptoMonnaie::create([
+            'name' => 'Stellar',
+            'symbol' => 'XLM',
+        ]);
+
+        CryptoMonnaie::create([
+            'name' => 'IOTA',
+            'symbol' => 'MIOTA',
+        ]);
+
+        CryptoMonnaie::create([
+            'name' => 'Dash',
+            'symbol' => 'DASH',
+        ]);
     }
 }

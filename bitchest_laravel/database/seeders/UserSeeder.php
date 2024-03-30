@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers_password\PasswordHelper;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,35 +16,35 @@ class UserSeeder extends Seeder
             'id' => 1,
             'name' => 'Joseph Staline',
             'email' => 'joseph1@gmail.com',
-            'password' => bcrypt('password1'),
+            'password' => PasswordHelper::hashBoth('password1'),
         ]);
 
         User::create([
             'id' => 2,
             'name' => 'John Doe',
             'email' => 'john.doe@example.com',
-            'password' => bcrypt('password2'),
+            'password' => PasswordHelper::hashBoth('password2'),
         ]);
 
         User::create([
             'id' => 3,
             'name' => 'Jane Doe',
             'email' => 'jane.doe@example.com',
-            'password' => bcrypt('password3'),
+            'password' => PasswordHelper::hashBoth('password3'),
         ]);
         
         User::create([
             'id' => 4,
             'name' => 'Alice Smith',
             'email' => 'alice.smith@example.com',
-            'password' => bcrypt('password4'),
+            'password' => PasswordHelper::hashBoth('password4'),
         ]);
         
         User::create([
             'id' => 5,
             'name' => 'Bob Johnson',
             'email' => 'bob.johnson@example.com',
-            'password' => bcrypt('password5'),
+            'password' => PasswordHelper::hashBoth('password5'),
         ]);
                 
     }

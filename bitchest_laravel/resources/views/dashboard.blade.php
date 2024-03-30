@@ -1,19 +1,70 @@
+<style>
+    /* Ajout du CSS pour le logo */
+    .bg-primary {
+        background-color: #01FF19;
+        /* Couleur primaire */
+    }
+
+    .bg-primary img {
+        max-height: 3rem;
+        /* Taille maximale du logo */
+    }
+
+    /* Styling pour la liste des liens */
+    ul {
+        list-style-type: none;
+        /* Suppression des puces */
+        padding: 0;
+    }
+
+    ul li {
+        margin-bottom: 0.5rem;
+        /* Espacement entre les éléments de la liste */
+    }
+
+    ul li a {
+        color: #38618C;
+        /* Couleur de lien */
+        text-decoration: none;
+        /* Suppression du soulignement */
+        font-family: 'Célias', sans-serif;
+        /* Police de caractères */
+    }
+
+    ul li a:hover {
+        color: #35A7FF;
+        /* Couleur de lien au survol */
+    }
+
+    /* Styling pour le bouton de déconnexion */
+    form button {
+        background: none;
+        border: none;
+        color: #38618C;
+        /* Couleur du texte */
+        font-family: 'Célias', sans-serif;
+        /* Police de caractères */
+        cursor: pointer;
+    }
+
+    form button:hover {
+        color: #35A7FF;
+        /* Couleur du texte au survol */
+    }
+</style>
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center bg-primary py-4 px-6">
-            <h2 class="font-celias font-semibold text-xl text-white leading-tight">
-                {{ __('Dashboard') }}
-            </h2>
             <img src="{{ asset('images/bitchest_logo.png') }}" alt="Bitchest Logo" class="h-10 w-auto">
         </div>
     </x-slot>
 
     <div class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row-reverse">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/4">
+                <!-- Contenu de la dashboard -->
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-
                     <ul>
                         <li><a href="{{ route('admin.user.create') }}">Ajouter utilisateur</a></li>
                         <li><a href="{{ route('admin.user.index') }}">Liste utilisateur</a></li>
@@ -24,44 +75,13 @@
 
                     <!-- Bouton de déconnexion -->
                     <form method="POST" action="{{ route('logout') }}">
-                        @csrf
                         <button type="submit" class="text-sm text-gray-700 underline">Déconnexion</button>
                     </form>
                 </div>
             </div>
+            <div class="content-show flex-1">
+                <!--c'est ici que vas s'affciher le contenue de chaque page-->
+            </div>
         </div>
     </div>
-
-    <style>
-        /* Couleurs */
-        .bg-primary {
-            background-color: #35A7FF; /* Bleu */
-        }
-
-        .text-white {
-            color: #FFFFFF; /* Blanc */
-        }
-
-        /* Typographie */
-        .font-celias {
-            font-family: "Célias", sans-serif;
-        }
-
-        /* Filtre */
-        .page-filter::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.5); /* Filtre blanc semi-transparent */
-            z-index: -1; /* Le filtre doit être derrière le contenu */
-        }
-
-        /* Responsive */
-        @media screen and (max-width: 768px) {
-            /* Ajoutez ici vos règles CSS pour les écrans de petite taille */
-        }
-    </style>
 </x-app-layout>

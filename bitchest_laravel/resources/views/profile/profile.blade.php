@@ -7,17 +7,65 @@
     <title>BITCHEST</title>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@latest/qrcode.min.js"></script>
     <style>
-        section {
-            display: flex;
-            justify-content: space-between;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
         }
 
-        .section2 {
+        section {
             display: flex;
-            flex-direction: column;
-            height: 350px;
-            width: 200px;
-            background-color: violet;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .section1,
+        .section2,
+        .blockchain {
+            flex-basis: 30%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section1 img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .blockchain h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .blockchain ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .blockchain li {
+            margin-bottom: 5px;
+        }
+
+        .recharge a {
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+            background-color: #35a7ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -52,7 +100,8 @@
         </div>
 
         <div class="section2">
-            <div id="solde">
+            <div class="recharge">
+                <h3>Solde</h3>
                 <?php
                 // Connectez-vous à votre base de données
                 $pdo = new PDO('mysql:host=host_name;dbname=database_name', 'username', 'password');
@@ -65,47 +114,25 @@
                 // Vérifiez si l'utilisateur existe
                 if ($user) {
                     // Affichez le solde de l'utilisateur
-                    echo '<p>Solde: ' . $user['solde'] . '</p>';
+                    echo '<p>' . $user['sold'] . '</p>';
                 } else {
                     // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur
                     echo '<p>L\'utilisateur n\'existe pas.</p>';
                 }
                 ?>
+                <div id="qrcode"></div>
+                <a href="https://mytouchpoint.net/">Recharger mon compte</a>
             </div>
-            <div id="recharg">
-
-                <div id="solde">
-                    <?php
-                    // Connectez-vous à votre base de données
-                    $pdo = new PDO('mysql:host=host_name;dbname=database_name', 'username', 'password');
-
-                    // Sélectionnez le solde de l'utilisateur depuis la base de données
-                    $stmt = $pdo->prepare("SELECT solde FROM utilisateurs WHERE id = :id");
-                    $stmt->execute(['id' => $userId]);
-                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                    // Vérifiez si l'utilisateur existe
-                    if ($user) {
-                        // Affichez le solde de l'utilisateur
-                        echo '<p>Solde: ' . $user['solde'] . '</p>';
-                    } else {
-                        // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur
-                        echo '<p>L\'utilisateur n\'existe pas.</p>';
-                    }
-                    ?>
-                </div>
-                <div>
-                    <div id="qrcode"></div>
-                    <a href="https://mytouchpoint.net/">Recharger mon compte</a>
-                </div>
-                <div>
-                    <h3>wallets</h3>
-                    <h4>security key: xxxxxxxxxxxx</h4>
-                    <h4>adresse: xxxxxxxxxxxxxxxx</h4>
-                </div>
-            </div>
+            <!-- Formulaire de modification de mot de passe -->
+            <form action="{{ route('profile.updatePassword') }}" method="POST">
+                @csrf
+                <label for="password">Nouveau mot de passe :</label>
+                <input type="password" id="password" name="password">
+                <button type="submit">Modifier le mot de passe</button>
+            </form>
 
         </div>
+
         <div class="blockchain">
             <h1>Cryptomonnaies de l'utilisateur</h1>
 
@@ -153,6 +180,7 @@
             ?>
         </div>
     </section>
+    @include('layouts.footer')
 
     <script>
         // Fonction pour générer le QR code avec le nom d'utilisateur
@@ -162,8 +190,8 @@
             // Utilisation de QRCode.js pour générer le QR code avec le nom d'utilisateur
             var qr = new QRCode(qrCodeDiv, {
                 text: username,
-                width: 256,
-                height: 256,
+                width: 200,
+                height: 200,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H

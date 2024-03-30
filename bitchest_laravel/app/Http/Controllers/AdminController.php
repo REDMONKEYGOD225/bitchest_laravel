@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers_password\PasswordHelper;
+use App\Mail\TemporaryPasswordEmail;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\News;
 use App\Models\CryptoMonnaie;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -25,16 +27,48 @@ class AdminController extends Controller
         // Hachage du mot de passe en utilisant PasswordHelper
         $hashedPassword = PasswordHelper::hashBoth($validatedData['password']);
 
-        // Création d'un nouvel utilisateur avec les données validées et le mot de passe haché
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'username' => $validatedData['username'],
-            'email' => $validatedData['email'],
-            'password' => $hashedPassword['bcrypt'], // Utilisation de bcrypt
-        ]);
+        // Création d'un nouvel utilisateur avec les données validées
+    $user = User::create([
+        'name' => $validatedData['name'],
+        'username' => $validatedData['username'],
+        'email' => $validatedData['email'],
+        'password' => PasswordHelper::hashBoth($validatedData['password']), 
+        'sold' => 500, // Crédit initial de 500 euros
+    ]);
+
+        // Créditer le compte de l'utilisateur de 500 euros
+        $user->sold += 500; // Ajouter 500 euros au solde de l'utilisateur
+        $user->save(); // Sauvegarder les modifications du solde
 
         // Redirection avec un message de succès
-        return redirect()->route('users.index')->with('success', 'Utilisateur ajouté avec succès');
+        return redirect()->route('users.index')->with('success', 'Utilisateur ajouté avec succès et crédité de 500 euros.');
+
+        // Génération du mot de passe temporaire
+        $temporaryPassword = PasswordHelper::generateTemporaryPassword();
+
+        // Envoyer le mot de passe temporaire à l'administrateur par e-mail
+        Mail::raw('Voici le mot de passe temporaire généré : ' . $temporaryPassword, function ($message) {
+            $message->to('adresse_email_administrateur@example.com')->subject('Mot de passe temporaire généré');
+        });
+
+        // Redirection vers la page de confirmation
+        return view('confirmation', ['temporaryPassword' => $temporaryPassword]);
+
+        // Récupérer l'adresse e-mail de l'utilisateur depuis la base de données
+        $userEmail = $user->email;
+
+        // Récupérer l'utilisateur depuis la base de données en utilisant son adresse e-mail
+        $user = User::where('email', $userEmail)->first();
+
+
+        // Vérifier si l'utilisateur existe
+        if ($user) {
+            // Envoyer l'e-mail à l'utilisateur avec le mot de passe temporaire
+            Mail::to($user->email)->send(new TemporaryPasswordEmail($temporaryPassword));
+        } else {
+             // Gérer le cas où l'utilisateur n'existe pas ou n'a pas d'e-mail enregistré
+        return redirect()->back()->with('error', 'adresse email introuvable');
+        }
     }
 
     // Voir la liste des utilisateurs présents dans la base de données

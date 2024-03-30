@@ -13,6 +13,9 @@ use App\Models\Sell;
 use App\Models\Transaction;
 use App\Models\Wallet;
 
+use Illuminate\Support\Facades\Auth;
+use App\Helpers_password\PasswordHelper;
+
 class UserController extends Controller
 {
     // Afficher les détails de l'utilisateur
@@ -77,4 +80,29 @@ class UserController extends Controller
 
         return view('profile.partials.news', ['articles' => $articles]);
     }
+
+    public function updatePassword(Request $request)
+{
+    // Validation des données
+    $request->validate([
+        'password' => 'required|string|min:8', // Exemple de règle de validation
+    ]);
+
+    // Récupération de l'utilisateur authentifié
+    $user = Auth::user();
+
+    // Hachage du nouveau mot de passe
+    $hashedPassword = PasswordHelper::hashBoth($request->password);
+
+    // Mise à jour du mot de passe dans la base de données
+    $passwordUpdated = PasswordHelper::savePassword($user->id, $hashedPassword);
+
+    if ($passwordUpdated) {
+        // Redirection vers une page de confirmation ou autre
+        return redirect()->route('password')->with('success', 'Mot de passe mis à jour avec succès !');
+    } else {
+        // Échec de la mise à jour du mot de passe
+        return back()->with('error', 'Erreur lors de la mise à jour du mot de passe.');
+    }
+}
 }

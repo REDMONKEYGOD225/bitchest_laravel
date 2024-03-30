@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Crypto-monnaies</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Ajoutez vos styles CSS ici */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #38618C;
+            text-align: left;
+        }
+
+        th {
+            background-color: #35A7FF;
+            color: #FFFFFF;
+        }
+
+        td img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        .crypto-name {
+            font-weight: bold;
+            color: #38618C;
+        }
+
+        canvas {
+            max-width: 100px;
+        }
+    </style>
 </head>
 
 <body>

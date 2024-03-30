@@ -6,6 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Crypto-monnaies</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Ajoutez vos styles CSS ici */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #38618C;
+            text-align: left;
+        }
+
+        th {
+            background-color: #35A7FF;
+            color: #FFFFFF;
+        }
+
+        td img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
+        .crypto-name {
+            font-weight: bold;
+            color: #38618C;
+        }
+
+        canvas {
+            max-width: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -83,70 +117,59 @@
     </table>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Stocker les instances des graphiques pour pouvoir les détruire
-            var charts = {};
+        // Fonction pour récupérer les données de cotation
+        function getCoursActuel(crypto) {
+            // Ici, vous devez appeler votre méthode PHP pour obtenir le cours actuel de la crypto-monnaie
+            return "$" + (Math.random() * 10000).toFixed(2); // Exemple de valeur aléatoire
+        }
 
-            function getCotations() {
-                fetch('/Helpers/cotations.php')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        Object.keys(data).forEach(function(crypto) {
-                            var cours = data[crypto]['cours'];
-                            var courbe = data[crypto]['cotations'];
-
-                            // Mettre à jour le cours actuel dans la cellule correspondante
-                            document.getElementById(crypto.toLowerCase().replace(" ", "-") + '-cours').textContent = cours;
-
-                            // Détruire le graphique existant s'il existe déjà
-                            if (charts[crypto]) {
-                                charts[crypto].destroy();
-                            }
-
-                            // Dessiner la nouvelle courbe à l'aide de Chart.js
-                            var ctx = document.getElementById(crypto.toLowerCase().replace(" ", "-") + '-courbe').getContext('2d');
-                            var myChart = new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    labels: Array.from({
-                                        length: 30
-                                    }, (_, i) => (i + 1).toString()), // Jours
-                                    datasets: [{
-                                        label: crypto,
-                                        data: courbe,
-                                        fill: false,
-                                        borderColor: 'rgb(75, 192, 192)',
-                                        tension: 0.1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-
-                            // Stocker le graphique dans le tableau pour pouvoir le détruire ultérieurement
-                            charts[crypto] = myChart;
-                        });
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                    });
+        // Fonction pour obtenir les données de la courbe
+        function getCourbe(crypto) {
+            // Ici, vous devez appeler votre méthode PHP pour obtenir les données de la courbe de la crypto-monnaie
+            // Ces données peuvent être stockées dans un fichier JSON ou récupérées via une API
+            // Pour cet exemple, nous allons simuler des données aléatoires pour la courbe
+            var courbe = [];
+            for (var i = 0; i < 30; i++) {
+                courbe.push(Math.random() * 1000); // Exemple de valeur aléatoire
             }
+            return courbe;
+        }
 
-            // Appeler la fonction pour récupérer les cotations lors du chargement initial
-            getCotations();
+        // Liste des crypto-monnaies
+        var cryptoMonnaies = ['Bitcoin', 'Ethereum', 'Ripple', 'Bitcoin Cash', 'Cardano', 'Litecoin', 'NEM', 'Stellar', 'IOTA', 'Dash'];
 
-            // Actualiser les cotations toutes les 5 secondes
-            setInterval(getCotations, 5000);
+        // Pour chaque crypto-monnaie, mettre à jour le cours actuel et afficher la courbe
+        cryptoMonnaies.forEach(function(crypto) {
+            var cours = getCoursActuel(crypto);
+            var courbe = getCourbe(crypto);
+
+            // Mettre à jour le cours actuel dans la cellule correspondante
+            document.getElementById(crypto.toLowerCase().replace(" ", "-") + "-cours").textContent = cours;
+
+            // Afficher la courbe à l'aide de Chart.js
+            var ctx = document.getElementById(crypto.toLowerCase().replace(" ", "-") + "-courbe").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({
+                        length: 30
+                    }, (_, i) => (i + 1).toString()), // Jours
+                    datasets: [{
+                        label: crypto,
+                        data: courbe,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>

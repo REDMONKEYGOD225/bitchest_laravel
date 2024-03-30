@@ -71,7 +71,7 @@
         <img src="images/bitchest_logo.png" alt="Bitchest Logo">
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="{{ route('welcome') }}">Accueil</a></li>
                 <li><a href="{{ route('marche') }}">Marché</a></li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#">Formation</a></li>

@@ -15,7 +15,7 @@ class AccountFactory extends Factory
             'id_wallet' => function () {
                 return \App\Models\Wallet::factory()->create()->id;
             },
-            'sold' => $this->faker->randomFloat(2, 100, 10000), // Solde aléatoire entre 100 et 10000 avec 2 décimales
+            'sold' => $this->faker->randomFloat(2, 0, 999999999999), // Solde aléatoire entre 0 et 999.999.999.999 avec 2 décimales
         ];
     }
 }

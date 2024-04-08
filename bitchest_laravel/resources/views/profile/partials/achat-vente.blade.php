@@ -142,6 +142,9 @@
         </form>
     </section>
     @include('layouts.footer')
+    <script>
+        
+    </script>
 </body>
 
 </html>

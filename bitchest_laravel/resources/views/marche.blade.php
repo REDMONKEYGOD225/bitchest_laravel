@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Crypto-monnaies</title>
+    <title>BITCHEST</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         table {
@@ -42,6 +42,7 @@
 </head>
 
 <body>
+    <canvas id="myChart" width="800" height="400"></canvas>
     <table>
         <thead>
             <tr>
@@ -116,59 +117,35 @@
     </table>
 
     <script>
-        // Fonction pour récupérer les données de cotation
-        function getCoursActuel(crypto) {
-            // Ici, vous devez appeler votre méthode PHP pour obtenir le cours actuel de la crypto-monnaie
-            return "$" + (Math.random() * 10000).toFixed(2); // Exemple de valeur aléatoire
-        }
+        // Données JSON des cotations et des noms des crypto-monnaies
+        var cotations = <?php echo $cotations_json; ?>;
+        var crypto_monnaies = <?php echo $crypto_monnaies_json; ?>;
 
-        // Fonction pour obtenir les données de la courbe
-        function getCourbe(crypto) {
-            // Ici, vous devez appeler votre méthode PHP pour obtenir les données de la courbe de la crypto-monnaie
-            // Ces données peuvent être stockées dans un fichier JSON ou récupérées via une API
-            // Pour cet exemple, nous allons simuler des données aléatoires pour la courbe
-            var courbe = [];
-            for (var i = 0; i < 30; i++) {
-                courbe.push(Math.random() * 1000); // Exemple de valeur aléatoire
-            }
-            return courbe;
-        }
-
-        // Liste des crypto-monnaies
-        var cryptoMonnaies = ['Bitcoin', 'Ethereum', 'Ripple', 'Bitcoin Cash', 'Cardano', 'Litecoin', 'NEM', 'Stellar', 'IOTA', 'Dash'];
-
-        // Pour chaque crypto-monnaie, mettre à jour le cours actuel et afficher la courbe
-        cryptoMonnaies.forEach(function(crypto) {
-            var cours = getCoursActuel(crypto);
-            var courbe = getCourbe(crypto);
-
-            // Mettre à jour le cours actuel dans la cellule correspondante
-            document.getElementById(crypto.toLowerCase().replace(" ", "-") + "-cours").textContent = cours;
-
-            // Afficher la courbe à l'aide de Chart.js
-            var ctx = document.getElementById(crypto.toLowerCase().replace(" ", "-") + "-courbe").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: Array.from({
-                        length: 30
-                    }, (_, i) => (i + 1).toString()), // Jours
-                    datasets: [{
+        // Créer un graphique avec Chart.js
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({
+                    length: 30
+                }, (_, i) => (i + 1).toString()), // Jours
+                datasets: crypto_monnaies.map(function(crypto, index) {
+                    return {
                         label: crypto,
-                        data: courbe,
+                        data: cotations[crypto],
                         fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(' + (Math.random() * 255) + ', ' + (Math.random() * 255) + ', ' + (Math.random() * 255) + ')',
                         tension: 0.1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    }
+                })
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-            });
+            }
         });
     </script>
 </body>
